@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/home")
-public class homeController {
+public class HomeController {
 	
 	@GetMapping() 
 	public String showHome(@RequestParam(required = false) String login, @RequestParam(required = false) String register) {

@@ -17,10 +17,15 @@ public class CustomUserDetails implements UserDetails{
 	public CustomUserDetails(User user) {
 		this.user = user;
 	}
+	
+	public boolean hasRole(String roleName) {
+		String role = "ROLE_" + this.user.getRole();
+		return role.equals(roleName);
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole());
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
 		
 		return Arrays.asList(authority);
 	}
@@ -34,6 +39,7 @@ public class CustomUserDetails implements UserDetails{
 	public String getUsername() {
 		return user.getUsername();
 	}
+	
 	
 	
 }
