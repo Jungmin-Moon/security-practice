@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 
 import com.example.demo.security.LoginSuccessHandler;
 import com.example.demo.services.UserService;
@@ -45,12 +45,12 @@ public class WebSecurityConfig{
 	@Bean
 	SecurityFilterChain config(HttpSecurity http) throws Exception {
 		//only for now while testing
-		http.csrf(csrf -> csrf.disable());
+		//http.csrf(csrf -> csrf.disable());
 		
 		http.authenticationProvider(authenticationProvider());
 		
 		http.authorizeHttpRequests(a -> a.requestMatchers("/","/home", "/login", "/register").permitAll()
-										.requestMatchers("/profile","/profile/**").hasRole("USER")
+										.requestMatchers("/profile","/profile/**").hasAnyRole("USER", "ADMIN")
 										.requestMatchers("/admin", "/admin/**").hasRole("ADMIN").anyRequest().authenticated());
 		
 		http.formLogin(l -> l.loginPage("/login").successHandler(loginSuccessHandler));
