@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -47,23 +48,15 @@ public class WebSecurityConfig{
 		http.csrf(csrf -> csrf.disable());
 		
 		http.authenticationProvider(authenticationProvider());
-		/*
-		http.authorizeHttpRequests(a -> a.requestMatchers("/home","/login", "/register").permitAll());
 		
-		http.authorizeHttpRequests(a -> a.requestMatchers("/profile").hasAnyRole("USER"));
-		http.authorizeHttpRequests(a -> a.requestMatchers("/admin").hasAnyRole("ADMIN"));
-		
-		//http.formLogin(l -> l.loginPage("/login").permitAll().successHandler(loginSuccessHandler).and().logout((logout) -> logout.permitAll()));
-		
-		http.formLogin(l -> l.loginPage("/login").permitAll().successHandler(loginSuccessHandler));
-		http.logout((logout) -> logout.permitAll()); */
-		
-		http.authorizeHttpRequests(a -> a.requestMatchers("/home", "/login", "/register").permitAll().requestMatchers("/profile").hasRole("USER")
-									.requestMatchers("/admin").hasRole("ADMIN").anyRequest().authenticated());
+		http.authorizeHttpRequests(a -> a.requestMatchers("/","/home", "/login", "/register").permitAll()
+										.requestMatchers("/profile","/profile/**").hasRole("USER")
+										.requestMatchers("/admin", "/admin/**").hasRole("ADMIN").anyRequest().authenticated());
 		
 		http.formLogin(l -> l.loginPage("/login").successHandler(loginSuccessHandler));
 		http.logout((logout) -> logout.permitAll());
 		
 		return http.build();
 	}
+	
 }

@@ -2,6 +2,7 @@ package com.example.demo.entities;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,14 +19,10 @@ public class CustomUserDetails implements UserDetails{
 		this.user = user;
 	}
 	
-	public boolean hasRole(String roleName) {
-		String role = "ROLE_" + this.user.getRole();
-		return role.equals(roleName);
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(user.getRole());
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" +user.getRole());
 		
 		return Arrays.asList(authority);
 	}

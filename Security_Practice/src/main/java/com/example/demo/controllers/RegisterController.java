@@ -20,15 +20,14 @@ public class RegisterController {
 	}
 	
 	@GetMapping() 
-	public String registerPage() {
+	public String registerPage(@RequestParam(required = false) String home) {
+		if (home != null) 
+			return "redirect:/home";
 		return "register";
 	}
 	
 	@PostMapping()
-	public String registerPost(@RequestParam(required = false) String home, User user) {
-		
-		if (home != null) 
-			return "redirect:/home";
+	public String registerPost(User user) {
 		
 		userService.createUser(user);
 		

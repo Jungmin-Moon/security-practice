@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org"
+				  xmlns = "http://www.w3.org/1999/xhtml"
+				  xmlns:sec = "https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-<head>
-	<meta charset = "UTF-8">
-	<title>Admin Page</title>
-</head>
-
-
-<body>
-	<h4>You should be able to see this page if you have the admin role.</h4>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Admin Page</title>
+	</head>
 	
-</body>
-
+	
+	<body>
+		<h4>You should be able to see this page if you have the admin role. Hello admin, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span></h4>
+		
+	</body>
+	
 
 </html>

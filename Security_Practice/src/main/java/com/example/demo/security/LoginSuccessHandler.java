@@ -1,12 +1,12 @@
 package com.example.demo.security;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
-
-import com.example.demo.entities.CustomUserDetails;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,34 +17,26 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
-		/*
+		
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
-		String redirectUrl = request.getContextPath();
-		
-		for (GrantedAuthority grantedAuthority : authorities) {
-			String role = grantedAuthority.getAuthority();
+		for (GrantedAuthority gAuth : authorities) {
+			String r = gAuth.getAuthority();
 			
-			if (role.equals("USER")) {
-				redirectUrl = "/profile";
+			if (r.contains("USER")) {
+				System.out.println("Sending to profile");
+				response.sendRedirect("/profile");
+			}
+			
+			if (r.contains("ADMIN")) {
+				response.sendRedirect("/admin");
 			}
 		}
 		
+		
 		System.out.println(authentication.getAuthorities());
-		*/
 		
-		CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
+
 		
-		String redirectURL = request.getContextPath();
-		
-		if (userDetails.hasRole("USER")) {
-			redirectURL = "/profile";
-		}
-		
-		if (userDetails.hasRole("ADMIN")) {
-			redirectURL = "/admin";
-		}
-		
-		response.sendRedirect(redirectURL);
 	}
 }

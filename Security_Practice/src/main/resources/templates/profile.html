@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org"
+				  xmlns = "http://www.w3.org/1999/xhtml"
+				  xmlns:sec = "https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 
-<head>
-	<meta charset = "UTF-8">
-	<title>Profile</title>
-</head>
+	<head>
+		<meta charset = "UTF-8">
+		<title>Profile</title>
+	</head>
 
 
-<body>
-	<h4>Welcome to the page after logging in, user <span>[[${#request.userPrincipal.principal.username}]]</span></h4>
-	
-</body>
+	<body>
+		<h4>Welcome to the page after logging in, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span></h4>
+		
+	</body>
 
 
 </html>
