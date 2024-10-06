@@ -6,7 +6,6 @@ A for fun project whose purpose is for practicing Spring Security
 . MySQL<br />
 . Spring Boot<br />
 . Thymeleaf<br />
-. JPA
-. Spring Security
-. Lombok (personal project so why not)
+. JPA<br />
+. Spring Security<br />
 
