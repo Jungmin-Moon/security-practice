@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.CustomUserDetails;
 import com.example.demo.entities.User;
+import com.example.demo.repositories.BankAccountRepository;
 import com.example.demo.repositories.UserRepository;
 
 @Service
@@ -16,6 +17,9 @@ public class UserService implements UserDetailsService{
 	
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private BankAccountRepository bankAccountRepo;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,6 +43,7 @@ public class UserService implements UserDetailsService{
 		user.setRole("USER");
 		
 		userRepo.save(user);
+		bankAccountRepo.createBankAccount(user.getUsername());
 		
 		return "Successfully registered.";
 	}
