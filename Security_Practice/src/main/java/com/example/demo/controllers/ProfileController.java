@@ -13,7 +13,8 @@ public class ProfileController {
 	@GetMapping() 
 	public String profileUser(Model model) {
 		
-		
+		//create a DTO object for bank accounts for easier manipulation
+		//then use it
 		
 		return "profile.html";
 	}
