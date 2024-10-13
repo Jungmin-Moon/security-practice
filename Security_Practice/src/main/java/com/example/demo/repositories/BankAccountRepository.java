@@ -15,4 +15,8 @@ public interface BankAccountRepository extends JpaRepository<Bank_Accounts, Long
 	@Modifying
 	@Query("INSERT into bank_accounts (id, username) values (DEFAULT, :username)")
 	public void createBankAccount(@Param("username")String username);
+	
+	
+	@Query("SELECT u from bank_accounts u where u.username = :username")
+	public Bank_Accounts getInfo(@Param("username")String username);
 }
