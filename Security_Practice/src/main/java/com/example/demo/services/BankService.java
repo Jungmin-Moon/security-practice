@@ -22,4 +22,8 @@ public class BankService {
 		
 		bankAccountRepo.save(bankAcc);
 	}
+	
+	public BankAccounts getInfo(String username) {
+		return bankAccountRepo.getInfo(username);
+	}
 }
