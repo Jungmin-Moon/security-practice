@@ -34,7 +34,7 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 		}
 		
 		
-		System.out.println(authentication.getAuthorities());
+		//System.out.println(authentication.getAuthorities());
 		
 
 		

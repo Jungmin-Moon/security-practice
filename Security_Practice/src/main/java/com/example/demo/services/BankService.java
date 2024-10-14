@@ -12,17 +12,17 @@ public class BankService {
 
 	@Autowired
 	BankAccountRepository bankAccountRepo;
-	
+
 	public void createBankAccount(User user) {
 		BankAccounts bankAcc = new BankAccounts();
-		
+
 		bankAcc.setAccountId(user.getId());
 		bankAcc.setAmount(0);
 		bankAcc.setUsername(user.getUsername());
-		
+
 		bankAccountRepo.save(bankAcc);
 	}
-	
+
 	public BankAccounts getInfo(String username) {
 		return bankAccountRepo.getInfo(username);
 	}
