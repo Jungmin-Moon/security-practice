@@ -1,17 +1,15 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "bank_accounts")
-public class Bank_Accounts {
+@Table(name = "bankaccounts")
+public class BankAccounts {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long accountId;
 	
 	private String username;

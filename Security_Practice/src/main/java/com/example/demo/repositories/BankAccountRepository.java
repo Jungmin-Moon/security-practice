@@ -1,22 +1,15 @@
 package com.example.demo.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entities.Bank_Accounts;
+import com.example.demo.entities.BankAccounts;
 
 @Repository
-public interface BankAccountRepository extends JpaRepository<Bank_Accounts, Long>{
+public interface BankAccountRepository extends JpaRepository<BankAccounts, Long>{
 	
-	
-	@Modifying
-	@Query("INSERT into bank_accounts (id, username) values (DEFAULT, :username)")
-	public void createBankAccount(@Param("username")String username);
-	
-	
-	@Query("SELECT u from bank_accounts u where u.username = :username")
-	public Bank_Accounts getInfo(@Param("username")String username);
+	@Query("SELECT u from BankAccounts u where u.username = :username")
+	public BankAccounts getInfo(@Param("username")String username);
 }
