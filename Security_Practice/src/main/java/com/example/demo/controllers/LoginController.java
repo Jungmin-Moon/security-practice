@@ -15,13 +15,4 @@ public class LoginController {
 	public String loginPage() {
 		return "login";
 	}
-	
-	/*
-	@PostMapping()
-	public String loginSuccess(@RequestParam String username, @RequestParam String password) {
-		
-		
-		
-		return "redirect:/";
-	} */
 }

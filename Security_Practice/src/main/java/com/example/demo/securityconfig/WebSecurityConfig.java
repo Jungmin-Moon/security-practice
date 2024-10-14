@@ -44,9 +44,6 @@ public class WebSecurityConfig{
 	
 	@Bean
 	SecurityFilterChain config(HttpSecurity http) throws Exception {
-		//only for now while testing
-		//http.csrf(csrf -> csrf.disable());
-		
 		http.authenticationProvider(authenticationProvider());
 		
 		http.authorizeHttpRequests(a -> a.requestMatchers("/","/home", "/login", "/register").permitAll()

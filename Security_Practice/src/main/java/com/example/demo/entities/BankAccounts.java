@@ -9,7 +9,6 @@ import jakarta.persistence.Table;
 public class BankAccounts {
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long accountId;
 	
 	private String username;

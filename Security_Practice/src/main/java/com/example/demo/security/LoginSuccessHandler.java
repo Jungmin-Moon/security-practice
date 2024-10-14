@@ -24,7 +24,6 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 			String r = gAuth.getAuthority();
 			
 			if (r.contains("USER")) {
-				//System.out.println("Sending to profile");
 				response.sendRedirect("/profile");
 			}
 			
@@ -32,11 +31,6 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 				response.sendRedirect("/admin");
 			}
 		}
-		
-		
-		//System.out.println(authentication.getAuthorities());
-		
-
 		
 	}
 }

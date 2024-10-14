@@ -27,7 +27,9 @@ public class ProfileController {
 		
 		System.out.println(user.getUsername());
 		
-		//var accountBankInfo = bankRepo.getInfo(null);
+		var accountBankInfo = bankRepo.getInfo(user.getUsername());
+		
+		//System.out.println(accountBankInfo.getAccountId() + " " + accountBankInfo.getAmount() + " " + accountBankInfo.getUsername());
 		
 		return "profile.html";
 	}
