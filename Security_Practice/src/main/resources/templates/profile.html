@@ -15,6 +15,22 @@
 		
 		
 		<!--Need to display user information and allow for forms such as depositing money, withdrawing money or transferring -->
+		
+		<div>
+			<table>
+				<thead>
+					<td>Username</td>
+					<td>Amount in Account</td>
+				</thead>
+				
+				<tbody>
+					<tr th:each = "bankInfo : ${bankInfo}">
+						<td th:text = "${bankInfo.username}"></td>
+						<td th:text = "${bankInfo.amount}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</body>
 
 

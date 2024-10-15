@@ -29,6 +29,8 @@ public class ProfileController {
 		
 		var accountBankInfo = bankRepo.getInfo(user.getUsername());
 		
+		model.addAttribute("bankInfo", accountBankInfo);
+		
 		//System.out.println(accountBankInfo.getAccountId() + " " + accountBankInfo.getAmount() + " " + accountBankInfo.getUsername());
 		
 		return "profile.html";
