@@ -29,9 +29,8 @@ public class ProfileController {
 		
 		var accountBankInfo = bankRepo.getInfo(user.getUsername());
 		
+		//due to display need to either limit max in an account or use BigDecimal and be able to store those in the 
 		model.addAttribute("bankInfo", accountBankInfo);
-		
-		//System.out.println(accountBankInfo.getAccountId() + " " + accountBankInfo.getAmount() + " " + accountBankInfo.getUsername());
 		
 		return "profile.html";
 	}

@@ -1,5 +1,7 @@
 package com.example.demo.entities;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -12,7 +14,7 @@ public class BankAccounts {
 	private long accountId;
 	
 	private String username;
-	private double amount;
+	private BigDecimal amount;
 	
 	
 	
@@ -30,10 +32,10 @@ public class BankAccounts {
 		this.username = username;
 	}
 	
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 	

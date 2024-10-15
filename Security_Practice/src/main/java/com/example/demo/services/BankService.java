@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +19,7 @@ public class BankService {
 		BankAccounts bankAcc = new BankAccounts();
 
 		bankAcc.setAccountId(user.getId());
-		bankAcc.setAmount(0);
+		bankAcc.setAmount(new BigDecimal(0));
 		bankAcc.setUsername(user.getUsername());
 
 		bankAccountRepo.save(bankAcc);
