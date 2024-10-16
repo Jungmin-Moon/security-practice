@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.repositories.BankAccountRepository;
 
@@ -18,7 +19,11 @@ public class ProfileController {
 	BankAccountRepository bankRepo;
 	
 	@GetMapping() 
-	public String profileUser(Authentication auth, Model model) {
+	public String profileUser(Authentication auth, Model model, @RequestParam(required = false) String transaction) {
+		
+		if (transaction != null) {
+			return "redirect:/transactions";
+		}
 		
 		//create a DTO object for bank accounts for easier manipulation
 		//then use it
@@ -33,5 +38,14 @@ public class ProfileController {
 		model.addAttribute("bankInfo", accountBankInfo);
 		
 		return "profile.html";
+	}
+	
+	
+	
+	@GetMapping("/transaction")
+	public String transactions() {
+		
+		
+		return "transactions.html";
 	}
 }
