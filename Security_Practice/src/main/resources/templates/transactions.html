@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org"
+				  xmlns = "http://www.w3.org/1999/xhtml"
+				  xmlns:sec = "https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+	<head>
+		<meta charset = "UTF-8">
+		<title>Transactions</title>
+	</head>
+	
+	
+	<body>
+		<div>
+			<h4>Which transaction would you like to perform, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span>?</h4>
+		</div>
+		
+		<br />
+		
+		<div>
+			<button id = "deposit">Deposit</button>
+			<button id = "withdraw">Withdraw</button>
+			<button id = "transfer">Transfer</button>
+		</div>
+		
+		
+		<br />
+		
+		<div>
+			
+		</div>
+	
+	</body>				  
+				  
+
+				  
+				  
+</html>
