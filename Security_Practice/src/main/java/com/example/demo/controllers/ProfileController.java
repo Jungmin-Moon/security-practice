@@ -19,9 +19,9 @@ public class ProfileController {
 	BankAccountRepository bankRepo;
 	
 	@GetMapping() 
-	public String profileUser(Authentication auth, Model model, @RequestParam(required = false) String transaction) {
+	public String profileUser(Authentication auth, Model model, @RequestParam(required = false) String transactions) {
 		
-		if (transaction != null) {
+		if (transactions != null) {
 			return "redirect:/transactions";
 		}
 		
@@ -30,7 +30,7 @@ public class ProfileController {
 		
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
-		System.out.println(user.getUsername());
+		//System.out.println(user.getUsername());
 		
 		var accountBankInfo = bankRepo.getInfo(user.getUsername());
 		
@@ -43,7 +43,9 @@ public class ProfileController {
 	
 	
 	@GetMapping("/transaction")
-	public String transactions() {
+	public String transactions(Authentication auth, Model model) {
+		UserDetails user = (UserDetails) auth.getPrincipal();
+		
 		
 		
 		return "transactions.html";
