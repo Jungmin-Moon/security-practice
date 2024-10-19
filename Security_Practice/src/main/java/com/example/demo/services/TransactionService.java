@@ -21,10 +21,22 @@ public class TransactionService {
 		
 		transaction.setUsername(username);
 		transaction.setTransactionAmount(amount);
-		transaction.setTransactionType(transactionType);
+		//transaction.setTransactionType(transactionType);
 		//sql needs yyyy-mm-dd and local date does yyyy-mm-dd
 		
 		transaction.setTransactionDate(LocalDate.now());
+		
+		if (transactionType.equalsIgnoreCase("deposit")) {
+			
+		}
+		
+		if (transactionType.equalsIgnoreCase("withdrawal")) {
+			
+		}
+		
+		if (transactionType.equalsIgnoreCase("transfer")) {
+			
+		}
 		
 		
 		transactionsRepo.save(transaction);
@@ -34,5 +46,7 @@ public class TransactionService {
 		
 		return transactionsRepo.getTransactions(username);
 	}
+	
+	
 	
 }
