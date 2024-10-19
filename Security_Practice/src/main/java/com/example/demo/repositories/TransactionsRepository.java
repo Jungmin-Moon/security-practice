@@ -12,7 +12,7 @@ import com.example.demo.entities.Transactions;
 @Repository
 public interface TransactionsRepository extends JpaRepository<Transactions, Long>{
 	
-	@Query("Select t from transactions t where t.username = :username")
+	@Query("Select t from Transactions t where t.username = :username")
 	public List<Transactions> getTransactions(@Param("username")String username);
 	
 }

@@ -11,13 +11,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.resource.PathResourceResolver;
 
 import com.example.demo.security.LoginSuccessHandler;
 import com.example.demo.services.UserService;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig{
+public class WebSecurityConfig implements WebMvcConfigurer{
 	
 	@Autowired
 	private LoginSuccessHandler loginSuccessHandler;
@@ -41,10 +44,19 @@ public class WebSecurityConfig{
 		
 		return authProvider;
 	}
-    
+    /*
     @Bean
     WebSecurityCustomizer configureWebSecurity() {
-    	return (web) -> web.ignoring().requestMatchers("/resources/**");
+    	return (web) -> web.ignoring().requestMatchers("/resources/static/**");
+    } */
+    
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    	registry.addResourceHandler("/static/**")
+    			.addResourceLocations("classpath:/static/")
+    			.setCachePeriod(3900)
+    			.resourceChain(true)
+    			.addResolver(new PathResourceResolver());
     }
 	
 	@Bean
@@ -52,8 +64,8 @@ public class WebSecurityConfig{
 		http.authenticationProvider(authenticationProvider());
 		
 		http.authorizeHttpRequests(a -> a.requestMatchers("/","/home", "/login", "/register").permitAll()
-										.requestMatchers("/profile","/profile/**").hasAnyRole("USER", "ADMIN")
-										.requestMatchers("/admin", "/admin/**").hasRole("ADMIN").anyRequest().authenticated());
+										.requestMatchers("/profile/**").hasAnyRole("USER", "ADMIN")
+										.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated());
 		
 		http.formLogin(l -> l.loginPage("/login").successHandler(loginSuccessHandler));
 		http.logout((logout) -> logout.permitAll());

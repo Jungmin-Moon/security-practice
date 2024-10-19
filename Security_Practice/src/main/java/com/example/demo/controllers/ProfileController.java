@@ -22,7 +22,7 @@ public class ProfileController {
 	public String profileUser(Authentication auth, Model model, @RequestParam(required = false) String transactions) {
 		
 		if (transactions != null) {
-			return "redirect:/transactions";
+			return "redirect:/profile/transactions";
 		}
 		
 		//create a DTO object for bank accounts for easier manipulation
@@ -42,7 +42,7 @@ public class ProfileController {
 	
 	
 	
-	@GetMapping("/transaction")
+	@GetMapping("/transactions")
 	public String transactions(Authentication auth, Model model) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
