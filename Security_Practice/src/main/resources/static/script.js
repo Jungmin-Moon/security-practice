@@ -1,9 +1,5 @@
-var depositButton = document.getElementById("deposit");
-
-
-
-depositButton.onclick = function() {
-	var depositDiv = document.getElementById("deposit");
+function toggleDepositForm() {
+	var depositDiv = document.getElementById("depositForm");
 	
 	if (depositDiv.style.display == "none") {
 		depositDiv.style.display = "block";

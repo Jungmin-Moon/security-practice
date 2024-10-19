@@ -5,7 +5,6 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Transactions</title>
-		<script type = "text/javascript" src = "/static/script.js"></script>
 	</head>
 	
 	
@@ -16,16 +15,16 @@
 		
 		<br />
 		
-		<div>
-			<button id = "deposit">Deposit</button>
-			<button id = "withdraw">Withdraw</button>			
-			<button id = "transfer">Transfer</button>
+		<div id = "buttons">
+			<button type = "button" id = "deposit" onclick = "toggleDepositForm()">Deposit</button>
+			<button type = "button" id = "withdraw">Withdraw</button>			
+			<button type = "button" id = "transfer">Transfer</button>
 		</div>
 		
 		
 		<br />
 		
-		<div id = "deposit" style = "display: none;">
+		<div id = "depositForm" style = "display: none">
 			<form action = "transaction" method = POST>
 				Deposit Amount: <input type = "number" name = "transactionAmount" /><br />
 				<input type = "hidden" name = "transactionType" value = "deposit" /><br />
@@ -36,7 +35,7 @@
 		
 		<br />
 		
-		<div id = "withdraw" style = "display: none;">
+		<div id = "withdrawForm" style = "display: none">
 			<form action = "transaction" method = POST>
 				Withdrawl Amount: <input type = "number" name = "transactionAmount" /><br />
 				<input type = "hidden" name = "transactionType" value = "withdraw" /><br />
@@ -47,7 +46,7 @@
 		
 		<br />
 		
-		<div id = "transfer" style = "display: none;">
+		<div id = "transferForm" style = "display: none">
 			<form action = "transaction" method = POST>
 				Transfer Amount: <input type = "number" name = "transactionAmount" /><br />
 				Target Account: <input type = "text" name = "transferTarget" /><br />
@@ -56,7 +55,7 @@
 				<button type = "submit">Transfer</button>
 			</form>
 		</div>
-	
+		<script type = "text/javascript" src = "/static/script.js"></script>
 	</body>				  
 				  
 
