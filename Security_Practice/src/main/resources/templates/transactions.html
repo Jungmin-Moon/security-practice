@@ -24,7 +24,7 @@
 		
 		<div id = "depositForm" style = "display: none">
 			<form action = "transaction" method = POST>
-				Deposit Amount: <input type = "number" name = "transactionAmount" /><br />
+				Deposit Amount: <input type = "text" name = "transactionAmount" /><br />
 				<input type = "hidden" name = "transactionType" value = "deposit" /><br />
 				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 				<button type = "submit">Deposit your money</button>
@@ -33,7 +33,7 @@
 		
 		<div id = "withdrawForm" style = "display: none">
 			<form action = "transaction" method = POST>
-				Withdrawl Amount: <input type = "number" name = "transactionAmount" /><br />
+				Withdrawl Amount: <input type = "text" name = "transactionAmount" /><br />
 				<input type = "hidden" name = "transactionType" value = "withdraw" /><br />
 				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 				<button type = "submit">Withdraw your money</button>
@@ -42,7 +42,7 @@
 		
 		<div id = "transferForm" style = "display: none">
 			<form action = "transaction" method = POST>
-				Transfer Amount: <input type = "number" name = "transactionAmount" /><br />
+				Transfer Amount: <input type = "text" name = "transactionAmount" /><br />
 				Target Account: <input type = "text" name = "transferTarget" /><br />
 				<input type = "hidden" name = "transactionType" value = "transfer" /><br />
 				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

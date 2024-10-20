@@ -43,7 +43,9 @@ public class ProfileController {
 	
 	
 	@GetMapping("/transactions")
-	public String transactions(Authentication auth, Model model) {
+	public String transactions(Authentication auth, Model model, @RequestParam(required = false) String targetAccount, @RequestParam String transactionType, @RequestParam String transactionAmount) {
+		//transactionType is always passed, and so is transactionAmount
+		//the target account is the one that will sometimes be there
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
 		
