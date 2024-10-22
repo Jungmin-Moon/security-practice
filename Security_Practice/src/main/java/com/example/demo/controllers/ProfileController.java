@@ -1,5 +1,7 @@
 package com.example.demo.controllers;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.demo.entities.Transactions;
 import com.example.demo.repositories.BankAccountRepository;
 
 @Controller
@@ -59,8 +62,37 @@ public class ProfileController {
 									Authentication auth) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
-		//System.out.println(transactionType + " " + transactionAmount);
+		if (targetAccount != null) {
+			
+		}
+		
+		Transactions transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
 		
 		return "redirect:/profile";
+	}
+	
+	
+	
+	private Transactions createTransactionWithdrawAndDeposit(String transactionAmount, String transactionType) {
+		
+		Transactions transaction = new Transactions();
+		
+		BigDecimal amount = new BigDecimal(Integer.parseInt(transactionAmount));
+		
+		transaction.setTransactionAmount(amount);
+		transaction.setTransactionType(transactionType);
+		
+		return transaction;
+	}
+	
+	private Transactions createTransferTransaction(String targetAccount, String transactionAmount, String transactionType) {
+		Transactions transferTransaction = new Transactions();
+		
+		BigDecimal amount = new BigDecimal(Integer.parseInt(transactionAmount));
+		
+		transferTransaction.setTransactionAmount(amount);
+		transferTransaction.setTransactionType(transactionType);
+		
+		return transferTransaction;
 	}
 }
