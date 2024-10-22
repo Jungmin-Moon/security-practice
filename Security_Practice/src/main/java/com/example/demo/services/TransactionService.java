@@ -16,32 +16,6 @@ public class TransactionService {
 	@Autowired
 	TransactionsRepository transactionsRepo;
 	
-	public void createTransaction(String username, String transactionType, BigDecimal amount) {
-		Transactions transaction = new Transactions();
-		
-		transaction.setUsername(username);
-		transaction.setTransactionAmount(amount);
-		//transaction.setTransactionType(transactionType);
-		//sql needs yyyy-mm-dd and local date does yyyy-mm-dd
-		
-		transaction.setTransactionDate(LocalDate.now());
-		
-		if (transactionType.equalsIgnoreCase("deposit")) {
-			
-		}
-		
-		if (transactionType.equalsIgnoreCase("withdrawal")) {
-			
-		}
-		
-		if (transactionType.equalsIgnoreCase("transfer")) {
-			
-		}
-		
-		
-		transactionsRepo.save(transaction);
-	}
-	
 	public List<Transactions> getTransactions(String username) {
 		
 		return transactionsRepo.getTransactions(username);
