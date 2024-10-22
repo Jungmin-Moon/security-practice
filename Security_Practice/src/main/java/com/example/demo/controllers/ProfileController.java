@@ -73,7 +73,7 @@ public class ProfileController {
 		
 		//need to get the username for the account making the transaction and send that as well to modify
 		
-		transactionService.addTransaction(transaction);
+		transactionService.addTransaction(transaction, user.getUsername());
 		
 		
 		return "redirect:/profile";

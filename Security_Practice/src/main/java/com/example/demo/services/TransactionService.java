@@ -21,8 +21,29 @@ public class TransactionService {
 		return transactionsRepo.getTransactions(username);
 	}
 	
-	public void addTransaction(Transactions transaction) {
+	public void addTransaction(Transactions transaction, String username) {
+		
+		if (transaction.getTransactionType().equals("deposit")) {
+			
+		} else if (transaction.getTransactionType().equals("withdraw")) {
+			
+		} else {
+			
+		}
+		
 		transactionsRepo.save(transaction);
+	}
+	
+	public void transactionDeposit() {
+		
+	}
+	
+	public void transactionWithdraw() {
+		
+	}
+	
+	public void transactionTransfer() {
+		
 	}
 	
 }
