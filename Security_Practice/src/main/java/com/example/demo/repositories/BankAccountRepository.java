@@ -1,5 +1,7 @@
 package com.example.demo.repositories;
 
+import java.math.BigDecimal;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,4 +14,6 @@ public interface BankAccountRepository extends JpaRepository<BankAccounts, Long>
 	
 	@Query("SELECT u from BankAccounts u where u.username = :username")
 	public BankAccounts getInfo(@Param("username")String username);
+	
+	
 }

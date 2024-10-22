@@ -21,6 +21,8 @@ public class TransactionService {
 		return transactionsRepo.getTransactions(username);
 	}
 	
-	
+	public void addTransaction(Transactions transaction) {
+		transactionsRepo.save(transaction);
+	}
 	
 }
