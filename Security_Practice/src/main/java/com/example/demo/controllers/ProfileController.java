@@ -38,7 +38,6 @@ public class ProfileController {
 		
 		var accountBankInfo = bankRepo.getInfo(user.getUsername());
 		
-		//due to display need to either limit max in an account or use BigDecimal and be able to store those in the 
 		model.addAttribute("bankInfo", accountBankInfo);
 		
 		return "profile.html";
@@ -48,8 +47,6 @@ public class ProfileController {
 	
 	@GetMapping("/transactions")
 	public String transactions(Authentication auth, Model model) {
-		//transactionType is always passed, and so is transactionAmount
-		//the target account is the one that will sometimes be there
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
 		
@@ -71,9 +68,7 @@ public class ProfileController {
 			transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
 		}
 		
-		//need to get the username for the account making the transaction and send that as well to modify
-		
-		transactionService.addTransaction(transaction, user.getUsername());
+		transactionService.addTransaction(transaction, user);
 		
 		
 		return "redirect:/profile";
@@ -103,6 +98,7 @@ public class ProfileController {
 		transferTransaction.setTransactionAmount(amount);
 		transferTransaction.setTransactionType(transactionType);
 		transferTransaction.setTransactionDate(LocalDate.now());
+		transferTransaction.setTransactionTarget(targetAccount);	
 		
 		return transferTransaction;
 	}

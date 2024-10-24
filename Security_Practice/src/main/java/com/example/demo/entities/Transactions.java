@@ -20,6 +20,7 @@ public class Transactions {
 	private String username;
 	private LocalDate transactionDate;
 	private String transactionType;
+	private String transactionTarget;
 	private BigDecimal transactionAmount;
 	
 	
@@ -52,6 +53,12 @@ public class Transactions {
 	}
 	public void setTransactionAmount(BigDecimal transactionAmount) {
 		this.transactionAmount = transactionAmount;
+	}
+	public String getTransactionTarget() {
+		return transactionTarget;
+	}
+	public void setTransactionTarget(String transactionTarget) {
+		this.transactionTarget = transactionTarget;
 	}
 	
 	
