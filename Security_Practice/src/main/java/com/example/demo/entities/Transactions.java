@@ -3,6 +3,7 @@ package com.example.demo.entities;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,9 +19,17 @@ public class Transactions {
 	private long id;
 	
 	private String username;
+	
+	@Column(name = "transactiondate")
 	private LocalDate transactionDate;
+	
+	@Column(name = "transactiontype")
 	private String transactionType;
+	
+	@Column(name = "transactiontarget")
 	private String transactionTarget;
+	
+	@Column(name = "transactionamount")
 	private BigDecimal transactionAmount;
 	
 	

@@ -80,7 +80,7 @@ public class ProfileController {
 		
 		Transactions transaction = new Transactions();
 		
-		BigDecimal amount = new BigDecimal(Integer.parseInt(transactionAmount));
+		BigDecimal amount = new BigDecimal(Double.parseDouble(transactionAmount));
 		
 		transaction.setTransactionAmount(amount);
 		transaction.setTransactionType(transactionType);
@@ -93,7 +93,7 @@ public class ProfileController {
 		Transactions transferTransaction = new Transactions();
 		
 		
-		BigDecimal amount = new BigDecimal(Integer.parseInt(transactionAmount));
+		BigDecimal amount = new BigDecimal(Double.parseDouble(transactionAmount));
 		
 		transferTransaction.setTransactionAmount(amount);
 		transferTransaction.setTransactionType(transactionType);

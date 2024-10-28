@@ -41,27 +41,28 @@ public class TransactionService {
 	
 	public void transactionDeposit(UserDetails user, Transactions transaction) {
 		transaction.setTransactionTarget(user.getUsername());
+		transaction.setUsername(user.getUsername());
 		
 		BankAccounts userAccount = bankAccountRepository.getInfo(user.getUsername());
 		
 		BigDecimal amountInAccount = userAccount.getAmount();
-		amountInAccount.add(transaction.getTransactionAmount());
+		BigDecimal difference = amountInAccount.add(transaction.getTransactionAmount());
 		
-		userAccount.setAmount(amountInAccount);
-		bankAccountRepository.save(userAccount);
-		
+		//userAccount.setAmount(difference);
+		bankAccountRepository.updateAccountAmount(user.getUsername(), difference);
 	}
 	
 	public void transactionWithdraw(UserDetails user, Transactions transaction) {
 		transaction.setTransactionTarget(user.getUsername());
+		transaction.setUsername(user.getUsername());
 		
 		BankAccounts userAccount = bankAccountRepository.getInfo(user.getUsername());
 		
 		BigDecimal amountInAccount = userAccount.getAmount();
-		amountInAccount.subtract(transaction.getTransactionAmount());
+		BigDecimal difference = amountInAccount.subtract(transaction.getTransactionAmount());
 		
-		userAccount.setAmount(amountInAccount);
-		bankAccountRepository.save(userAccount);
+		//userAccount.setAmount(difference);
+		bankAccountRepository.updateAccountAmount(user.getUsername(), difference);
 	}
 	
 	public void transactionTransfer(UserDetails user, Transactions transaction) {
