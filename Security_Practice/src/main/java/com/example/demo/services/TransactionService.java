@@ -66,7 +66,19 @@ public class TransactionService {
 	}
 	
 	public void transactionTransfer(UserDetails user, Transactions transaction) {
+		transaction.setUsername(user.getUsername());
 		
+		BankAccounts senderAccount = bankAccountRepository.getInfo(user.getUsername());
+		BankAccounts receiverAccount = bankAccountRepository.getInfo(transaction.getTransactionTarget());
+		
+		BigDecimal senderAmount = senderAccount.getAmount();
+		BigDecimal receiverAmount = receiverAccount.getAmount();
+		
+		BigDecimal senderLoses = senderAmount.subtract(transaction.getTransactionAmount());
+		BigDecimal receiverGains = receiverAmount.add(transaction.getTransactionAmount());
+		
+		bankAccountRepository.updateAccountAmount(user.getUsername(), senderLoses);
+		bankAccountRepository.updateAccountAmount(transaction.getTransactionTarget(), receiverGains);
 	}
 	
 }
