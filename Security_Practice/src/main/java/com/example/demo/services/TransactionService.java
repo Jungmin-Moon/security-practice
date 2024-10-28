@@ -67,6 +67,7 @@ public class TransactionService {
 	
 	public void transactionTransfer(UserDetails user, Transactions transaction) {
 		transaction.setUsername(user.getUsername());
+		System.out.println(transaction.getTransactionTarget());
 		
 		BankAccounts senderAccount = bankAccountRepository.getInfo(user.getUsername());
 		BankAccounts receiverAccount = bankAccountRepository.getInfo(transaction.getTransactionTarget());

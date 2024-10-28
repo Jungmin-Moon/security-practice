@@ -55,20 +55,22 @@ public class ProfileController {
 	}
 	
 	@PostMapping("/transactions")
-	public String transactionsPost(@RequestParam(required = false) String targetAccount, @RequestParam String transactionType, @RequestParam String transactionAmount,
+	public String transactionsPost(@RequestParam(required = false) String transferTarget, @RequestParam String transactionType, @RequestParam String transactionAmount,
 									Authentication auth) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		Transactions transaction = new Transactions();
 		transaction.setUsername(user.getUsername());
 		
-		if (targetAccount != null) {
-			transaction = createTransferTransaction(targetAccount, transactionAmount, transactionType);
+		if (transferTarget != null) {
+			transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
+			transactionService.addTransaction(transaction, user);
 		} else {
 		
 			transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
+			transactionService.addTransaction(transaction, user);
 		}
 		
-		transactionService.addTransaction(transaction, user);
+		//transactionService.addTransaction(transaction, user);
 		
 		
 		return "redirect:/profile";
