@@ -29,8 +29,13 @@ public class RegisterController {
 	@PostMapping()
 	public String registerPost(User user) {
 		
-		userService.createUser(user);
+		if (userService.createUser(user) == false) {
+			return "redirect:/home";
+		} else {
+			String message = "The username " + user.getUsername() + " was already taken. Please use a different one.";
+			return "register";
+		}
 		
-		return "redirect:/home";
+		//return "redirect:/home";
 	}
 }

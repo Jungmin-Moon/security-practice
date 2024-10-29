@@ -49,8 +49,6 @@ public class ProfileController {
 	public String transactions(Authentication auth, Model model) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
-		
-		
 		return "transactions.html";
 	}
 	
@@ -69,9 +67,6 @@ public class ProfileController {
 			transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
 			transactionService.addTransaction(transaction, user);
 		}
-		
-		//transactionService.addTransaction(transaction, user);
-		
 		
 		return "redirect:/profile";
 	}

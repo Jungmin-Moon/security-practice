@@ -32,19 +32,29 @@ public class UserService implements UserDetailsService{
 		return new CustomUserDetails(user);
 	}
 	
-	public String createUser(User user) {
-		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	public boolean createUser(User user) {
+		boolean created = true;
 		
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
+		String checkUsername = user.getUsername();
 		
-		user.setPassword(encodedPassword);
-		
-		user.setRole("USER");
-		
-		userRepo.save(user);
+		if (userRepo.getUserByUsername(checkUsername) == null) {
+			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+			
+			String encodedPassword = passwordEncoder.encode(user.getPassword());
+			
+			user.setPassword(encodedPassword);
+			
+			user.setRole("USER");
+			
+			userRepo.save(user);
+		} else {
+			created = false;
+		}
 		
 		bankService.createBankAccount(user);
 		
-		return "Successfully registered.";
+		
+		
+		return created;
 	}
 }
