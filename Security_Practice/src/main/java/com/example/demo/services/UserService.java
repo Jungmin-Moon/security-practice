@@ -47,13 +47,10 @@ public class UserService implements UserDetailsService{
 			user.setRole("USER");
 			
 			userRepo.save(user);
+			bankService.createBankAccount(user);
 		} else {
 			created = false;
 		}
-		
-		bankService.createBankAccount(user);
-		
-		
 		
 		return created;
 	}
