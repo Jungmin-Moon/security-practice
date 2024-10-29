@@ -38,7 +38,10 @@ public class ProfileController {
 		
 		var accountBankInfo = bankRepo.getInfo(user.getUsername());
 		
+		var userTransactions = transactionService.getTransactions(user.getUsername());
+		
 		model.addAttribute("bankInfo", accountBankInfo);
+		model.addAttribute("userTransactions", userTransactions);
 		
 		return "profile.html";
 	}
