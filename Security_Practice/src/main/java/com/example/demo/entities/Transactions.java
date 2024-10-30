@@ -16,6 +16,7 @@ public class Transactions {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "transactionid")
 	private long id;
 	
 	private String username;

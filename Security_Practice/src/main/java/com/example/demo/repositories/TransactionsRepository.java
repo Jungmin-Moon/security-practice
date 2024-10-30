@@ -15,7 +15,7 @@ import jakarta.transaction.Transactional;
 @Repository
 public interface TransactionsRepository extends JpaRepository<Transactions, Long>{
 	
-	@Query("Select t from Transactions t where t.username = :username")
+	@Query("Select t from Transactions t where t.username = ?1")
 	public List<Transactions> getTransactions(@Param("username")String username);
 	
 }
