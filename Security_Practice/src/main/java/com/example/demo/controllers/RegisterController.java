@@ -24,6 +24,7 @@ public class RegisterController {
 	public String registerPage(@RequestParam(required = false) String home) {
 		if (home != null) 
 			return "redirect:/home";
+		
 		return "register";
 	}
 	
@@ -34,7 +35,7 @@ public class RegisterController {
 			return "redirect:/home";
 		} else {
 			String message = "The username " + user.getUsername() + " was already taken. Please use a different one.";
-			model.addAttribute("error message",message);		
+			model.addAttribute("error_message",message);		
 			return "register";
 		}
 		
