@@ -35,6 +35,30 @@
 		
 		<br />
 		<br />
+		
+		<div>
+			<thead>
+				<tr>
+					<td>Transaction Date</td>
+					<td>Transaction Type</td>
+					<td>Sender</td>
+					<td>Receiver</td>
+					<td>Amount</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each = "transaction: ${userTransactions}">
+					<td th:text = "${transaction.transactionDate}"></td>
+					<td th:text = "${transaction.transactionType}"></td>
+					<td th:text = "${transaction.username}"></td>
+					<td th:text = "${transaction.transactionTarget}"></td>
+					<td th:text = "${transaction.transactionAmount}"></td>
+				</tr>
+			</tbody>
+		</div>
+		
+		<br />
+		<br />
 		<div>
 			<a href = "/profile?transactions">Click here to withdraw, deposit or transfer money</a>
 		</div>
