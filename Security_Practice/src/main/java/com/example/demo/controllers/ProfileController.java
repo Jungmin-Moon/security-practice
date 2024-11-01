@@ -21,11 +21,14 @@ import com.example.demo.services.TransactionService;
 @RequestMapping("/profile")
 public class ProfileController {
 
-	@Autowired
-	BankAccountRepository bankRepo;
+	private BankAccountRepository bankRepo;
+	private TransactionService transactionService;
 	
-	@Autowired
-	TransactionService transactionService;
+	ProfileController(BankAccountRepository bankRepo, TransactionService transactionService) {
+		this.bankRepo = bankRepo;
+		this.transactionService = transactionService;
+		
+	}
 	
 	@GetMapping() 
 	public String profileUser(Authentication auth, Model model, @RequestParam(required = false) String transactions) {

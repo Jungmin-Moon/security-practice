@@ -15,11 +15,13 @@ import com.example.demo.repositories.TransactionsRepository;
 @Service
 public class TransactionService {
 	
-	@Autowired
-	TransactionsRepository transactionsRepo;
+	private TransactionsRepository transactionsRepo;
+	private BankAccountRepository bankAccountRepository;
 	
-	@Autowired
-	BankAccountRepository bankAccountRepository;
+	TransactionService(TransactionsRepository transactionsRepo, BankAccountRepository bankAccountRepository) {
+		this.transactionsRepo = transactionsRepo;
+		this.bankAccountRepository = bankAccountRepository;
+	}
 	
 	public List<Transactions> getTransactions(String username) {
 		
