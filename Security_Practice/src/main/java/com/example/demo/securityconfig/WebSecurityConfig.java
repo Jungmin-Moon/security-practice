@@ -44,11 +44,6 @@ public class WebSecurityConfig implements WebMvcConfigurer{
 		
 		return authProvider;
 	}
-    /*
-    @Bean
-    WebSecurityCustomizer configureWebSecurity() {
-    	return (web) -> web.ignoring().requestMatchers("/resources/static/**");
-    } */
     
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -57,6 +52,11 @@ public class WebSecurityConfig implements WebMvcConfigurer{
     			.setCachePeriod(3900)
     			.resourceChain(true)
     			.addResolver(new PathResourceResolver());
+    } 
+    
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+    	return (web) -> web.ignoring().requestMatchers("/css/**");
     }
 	
 	@Bean
