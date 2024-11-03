@@ -63,7 +63,7 @@ public class WebSecurityConfig implements WebMvcConfigurer{
 	SecurityFilterChain config(HttpSecurity http) throws Exception {
 		http.authenticationProvider(authenticationProvider());
 		
-		http.authorizeHttpRequests(a -> a.requestMatchers("/","/home", "/login", "/register").permitAll()
+		http.authorizeHttpRequests(a -> a.requestMatchers("/","/home", "/login", "/register", "/bankaccounts/**").permitAll()
 										.requestMatchers("/profile/**").hasAnyRole("USER", "ADMIN")
 										.requestMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated());
 		
