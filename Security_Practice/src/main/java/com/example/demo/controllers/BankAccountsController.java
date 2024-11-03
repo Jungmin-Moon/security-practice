@@ -1,5 +1,6 @@
 package com.example.demo.controllers;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,10 +33,6 @@ public class BankAccountsController {
 	@GetMapping("/{id}")
 	public ResponseEntity findById(@PathVariable long id) {
 		Optional<BankAccounts> bankAcc = bankRepo.findById(id);
-		/*
-		return ResponseEntity.status(HttpStatus.FOUND)
-							.header("Bank Account",)
-							.body(bankRepo.findById(id)); */
 		if (bankAcc.isPresent()) {
 			return ResponseEntity.status(HttpStatus.FOUND)
 					.header("Bank Account", "User")
@@ -45,4 +42,10 @@ public class BankAccountsController {
 					.body("No such user exists.");
 		}
 	}
+	
+	@GetMapping("/amounts")
+	public List<BigDecimal> getAllAmounts() {
+		return bankRepo.getAmounts();
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.example.demo.repositories;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -22,4 +23,7 @@ public interface BankAccountRepository extends JpaRepository<BankAccounts, Long>
 	@Transactional
 	@Query("Update BankAccounts u set u.amount = ?2 where u.username = ?1")
 	public void updateAccountAmount(@Param("username")String username, BigDecimal newAmount);
+	
+	@Query("SELECT amount from BankAccounts")
+	public List<BigDecimal> getAmounts();
 }
