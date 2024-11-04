@@ -3,7 +3,6 @@ package com.example.demo.controllers;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;

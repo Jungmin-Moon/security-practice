@@ -52,10 +52,10 @@ public class WebSecurityConfig implements WebMvcConfigurer{
     			.setCachePeriod(3900)
     			.resourceChain(true)
     			.addResolver(new PathResourceResolver());
-    } 
-    
+    }
+
     @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
+    WebSecurityCustomizer webSecurityCustomizer() {
     	return (web) -> web.ignoring().requestMatchers("/css/**");
     }
 	
