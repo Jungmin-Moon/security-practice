@@ -32,3 +32,5 @@ function toggleTransferForm() {
 		transferDiv.style.display = "none";
 	}
 }
+
+

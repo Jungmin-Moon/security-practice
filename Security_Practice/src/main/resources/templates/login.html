@@ -17,6 +17,10 @@
 				<button type = "submit">Log in</button>
 			</form>
 		</div>
+		
+		<div id = "errorMessage" th:if = "${param.error}">
+			Invalid username or password. Please make sure to check you entered the correct credentials.
+		</div>
 	</body>
 
 
