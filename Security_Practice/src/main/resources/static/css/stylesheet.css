@@ -1,3 +1,4 @@
+/* Login Page */
 #login {
 	text-align:center;
 	color: black;
@@ -13,4 +14,73 @@
 
 #loginBody{
 	background-color: Lavender;
+}
+
+/*Profile Page */
+#profileBody {
+	background-color: Lavender;
+}
+
+#headers {
+	text-align: center;
+	font-weight: bold;
+}
+
+#breaks {
+	width: 100%;
+	size = 100px;
+	color = gray;
+}
+
+#userInfo {
+	border: 4px solid;
+	width: 100%;
+	background-color: #EEEEEE;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#userInfo thead {
+	background: #58A4A4;
+  	background: -moz-linear-gradient(top, #82bbbb 0%, #68adad 66%, #58A4A4 100%);
+  	background: -webkit-linear-gradient(top, #82bbbb 0%, #68adad 66%, #58A4A4 100%);
+  	background: linear-gradient(to bottom, #82bbbb 0%, #68adad 66%, #58A4A4 100%);
+}
+
+#userInfo thead tr td {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+}
+
+#userInfo td, #userInfo th {
+	border: 3px solid #AAAAAA;
+	padding: 3px 3px;
+}
+
+#userTransactions {
+	border: 4px solid #1C6EA4;
+	background-color: #EEEEEE;
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+#userTransactions td, #userTransactions th {
+	border: 3px solid #AAAAAA;
+	padding: 3px 3px;
+}
+
+#userTransactions thead tr td {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: left;
+}
+
+#userTransactions thead {
+	background: #58A4A4;
+  	background: -moz-linear-gradient(top, #82bbbb 0%, #68adad 66%, #58A4A4 100%);
+  	background: -webkit-linear-gradient(top, #82bbbb 0%, #68adad 66%, #58A4A4 100%);
+  	background: linear-gradient(to bottom, #82bbbb 0%, #68adad 66%, #58A4A4 100%);
+  	border-bottom: 2px solid #444444;
 }

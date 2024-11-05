@@ -6,16 +6,16 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Profile</title>
+		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/stylesheet.css}" />
 	</head>
 
 
 	<body id = "profileBody">
-		<h4>Welcome to the page after logging in, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span></h4>
+		<h1 id = "headers">Welcome to your profile, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span></h1>
 		
+		<hr id = "breaks" />
 		
-		
-		<!--Need to display user information and allow for forms such as depositing money, withdrawing money or transferring -->
-		
+		<h1 id = "headers">Here is your account information.</h1>
 		<div>
 			<table id = "userInfo">
 				<thead>
@@ -32,10 +32,10 @@
 			</table>
 		</div>
 		
-		
 		<br />
-		<br />
+		<hr id = "breaks" />
 		
+		<h1 id = "headers">Here are your recent transactions.</h1>
 		<div>
 			<table id = "userTransactions">
 				<thead>
@@ -59,9 +59,9 @@
 			</table>
 		</div>
 		
-		<br />
-		<br />
-		<div>
+		<br/>
+		<hr id = "breaks" />
+		<div id = "transactionsLink">
 			<a href = "/profile?transactions">Click here to withdraw, deposit or transfer money</a>
 		</div>
 	</body>
