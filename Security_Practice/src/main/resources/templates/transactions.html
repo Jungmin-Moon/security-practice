@@ -49,6 +49,13 @@
 				<button type = "submit">Transfer your money</button>
 			</form>
 		</div>
+		
+		<div>
+			<form th:action = "@{/logout}" method = "post">
+				<input type = "submit" value = "Sign Out" />
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+			</form>
+		</div>
 		<script type = "text/javascript" src = "/static/script.js"></script>
 	</body>				  
 				  
