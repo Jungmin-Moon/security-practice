@@ -5,10 +5,11 @@
 	<head>
 		<meta charset = "UTF-8">
 		<title>Transactions</title>
+		<link rel = "stylesheet" type = "text/css" th:href = "@{/css/transactionsStyle.css}" />
 	</head>
 	
 	
-	<body>
+	<body id = "transactionsBody">
 		<div>
 			<h4>Which transaction would you like to perform, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span>?</h4>
 		</div>

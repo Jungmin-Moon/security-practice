@@ -1,0 +1,30 @@
+#transactionsBody {
+	background-color: Lavender;
+}
+
+#depositButton {
+	background-color: green;
+	border: 2px black;
+	color: white;
+	padding: 20px 30px;
+	text-align: center;
+	width: 33%;
+}
+
+#withdrawButton {
+	background-color: green;
+	border: 2px black;
+	color: white;
+	padding: 20px 30px;
+	text-align: center;
+	width: 33%;
+}
+
+#transferButton {
+	background-color: green;
+	border: 2px black;
+	color: white;
+	padding: 20px 30px;
+	text-align: center;
+	width: 33%;
+}
