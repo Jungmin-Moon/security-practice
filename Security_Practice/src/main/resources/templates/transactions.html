@@ -22,35 +22,35 @@
 			<button type = "button" id = "transferButton" onclick = "toggleTransferForm()">Transfer</button>
 		</div>
 		
-		
-		<div id = "depositForm" style = "display: none">
-			<form action = "transactions" method = POST>
-				Deposit Amount: <input type = "text" name = "transactionAmount" /><br />
-				<input type = "hidden" name = "transactionType" value = "deposit" /><br />
-				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-				<button type = "submit">Deposit your money</button>
-			</form>
+		<div id = "formDiv">
+			<div id = "depositForm" style = "display: none">
+				<form action = "transactions" method = POST>
+					Deposit Amount: <input type = "text" name = "transactionAmount" /><br />
+					<input type = "hidden" name = "transactionType" value = "deposit" /><br />
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+					<button type = "submit">Deposit your money</button>
+				</form>
+			</div>
+			
+			<div id = "withdrawForm" style = "display: none">
+				<form action = "transactions" method = POST>
+					Withdrawl Amount: <input type = "text" name = "transactionAmount" /><br />
+					<input type = "hidden" name = "transactionType" value = "withdraw" /><br />
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+					<button type = "submit">Withdraw your money</button>
+				</form>
+			</div>
+			
+			<div id = "transferForm" style = "display: none">
+				<form action = "transactions" method = POST>
+					Transfer Amount: <input type = "text" name = "transactionAmount" /><br />
+					Target Account: <input type = "text" name = "transferTarget" /><br />
+					<input type = "hidden" name = "transactionType" value = "transfer" /><br />
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+					<button type = "submit">Transfer your money</button>
+				</form>
+			</div>
 		</div>
-		
-		<div id = "withdrawForm" style = "display: none">
-			<form action = "transactions" method = POST>
-				Withdrawl Amount: <input type = "text" name = "transactionAmount" /><br />
-				<input type = "hidden" name = "transactionType" value = "withdraw" /><br />
-				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-				<button type = "submit">Withdraw your money</button>
-			</form>
-		</div>
-		
-		<div id = "transferForm" style = "display: none">
-			<form action = "transactions" method = POST>
-				Transfer Amount: <input type = "text" name = "transactionAmount" /><br />
-				Target Account: <input type = "text" name = "transferTarget" /><br />
-				<input type = "hidden" name = "transactionType" value = "transfer" /><br />
-				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-				<button type = "submit">Transfer your money</button>
-			</form>
-		</div>
-		
 		<div>
 			<form th:action = "@{/logout}" method = "post">
 				<input type = "submit" value = "Sign Out" />

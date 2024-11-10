@@ -4,7 +4,7 @@
 
 #depositButton {
 	background-color: green;
-	border: 2px black;
+	border: 2px solid black;
 	color: white;
 	padding: 20px 30px;
 	text-align: center;
@@ -13,7 +13,7 @@
 
 #withdrawButton {
 	background-color: green;
-	border: 2px black;
+	border: 2px solid black;
 	color: white;
 	padding: 20px 30px;
 	text-align: center;
@@ -22,9 +22,27 @@
 
 #transferButton {
 	background-color: green;
-	border: 2px black;
+	border: 2px solid black;
 	color: white;
 	padding: 20px 30px;
 	text-align: center;
+	width: 33%;
+}
+
+#formDiv {
+	display: flex;
+}
+#depositForm {
+	margin-right: auto;
+	width: 33%;
+}
+
+#withdrawForm {
+	margin-right: auto;
+	width: 33%;	
+}
+
+#transferForm {
+	margin-right: auto;
 	width: 33%;
 }
