@@ -11,7 +11,7 @@
 	
 	<body id = "transactionsBody">
 		<div>
-			<h4>Which transaction would you like to perform, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span>?</h4>
+			<h1>Which transaction would you like to perform, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span>?</h1>
 		</div>
 		
 		<br />
@@ -29,7 +29,7 @@
 			<br />
 			<div id = "depositForm" style = "display: none">
 				<form action = "transactions" method = POST>
-					Deposit Amount: <input type = "text" name = "transactionAmount" /><br />
+					Deposit Amount: <input type = "text" name = "transactionAmount" id = "depositAmount" /><br />
 					<br />
 					<input type = "hidden" name = "transactionType" value = "deposit" /><br />
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
@@ -39,9 +39,9 @@
 			
 			<div id = "withdrawForm" style = "display: none">
 				<form action = "transactions" method = POST>
-					Withdrawl Amount: <input type = "text" name = "transactionAmount" /><br />
+					Withdrawl Amount: <input type = "text" name = "transactionAmount" id = "withdrawAmount"/><br />
 					<br />
-					<input type = "hidden" name = "transactionType" value = "withdraw" /><br />
+					<input type = "hidden" name = "transactionType" value = "withdraw"/><br />
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
 					<button type = "submit">Withdraw your money</button>
 				</form>
@@ -49,9 +49,9 @@
 			
 			<div id = "transferForm" style = "display: none">
 				<form action = "transactions" method = POST>
-					Transfer Amount: <input type = "text" name = "transactionAmount" /><br />
+					Transfer Amount: <input type = "text" name = "transactionAmount" id = "transferAmount" /><br />
 					<br />
-					Target Account: <input type = "text" name = "transferTarget" /><br />
+					Target Account: <input type = "text" name = "transferTarget" id = "transferTarget" /><br />
 					<br />
 					<input type = "hidden" name = "transactionType" value = "transfer" /><br />
 					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

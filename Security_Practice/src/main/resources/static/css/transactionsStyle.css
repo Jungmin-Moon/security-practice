@@ -31,17 +31,20 @@
 
 #depositForm {
 	margin-right: auto;
-	width: 33%;
+	width: 100%;
+	font-weight: bold;
 }
 
 #withdrawForm {
 	margin-right: auto;
-	width: 33%;	
+	width: 100%;
+	font-weight: bold;	
 }
 
 #transferForm {
 	margin-right: auto;
-	width: 33%;
+	width: 100%;
+	font-weight: bold;
 }
 
 #breaks {
