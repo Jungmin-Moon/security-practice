@@ -21,9 +21,11 @@ public class RegisterController {
 	}
 	
 	@GetMapping() 
-	public String registerPage(@RequestParam(required = false) String home) {
+	public String registerPage(@RequestParam(required = false) String home, @RequestParam(required = false) String login) {
 		if (home != null) 
 			return "redirect:/home";
+		if (login != null) 
+			return "redirect:/login";
 		
 		return "register";
 	}

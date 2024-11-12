@@ -16,3 +16,13 @@
 	background-color: Lavender;
 }
 
+a {
+	display: block;
+	text-align: center;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+
