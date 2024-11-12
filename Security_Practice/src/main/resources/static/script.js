@@ -1,7 +1,10 @@
+var depositDiv = document.getElementById("depositForm");
+var withdrawDiv = document.getElementById("withdrawForm");
+var transferDiv = document.getElementById("transferForm");
+
 function toggleDepositForm() {
-	var depositDiv = document.getElementById("depositForm");
 	
-	if (depositDiv.style.display == "none") {
+	if (depositDiv.style.display == "none" && withdrawDiv.style.display == "none" && transferDiv.style.display == "none") {
 		depositDiv.style.display = "block";
 	} 
 	else {
@@ -11,9 +14,8 @@ function toggleDepositForm() {
 
 
 function toggleWithdrawForm() {
-	var withdrawDiv = document.getElementById("withdrawForm");
 	
-	if (withdrawDiv.style.display == "none") {
+	if (withdrawDiv.style.display == "none" && depositDiv.style.display == "none" && transferDiv.style.display == "none") {
 		withdrawDiv.style.display = "block";
 	} 
 	else {
@@ -23,9 +25,8 @@ function toggleWithdrawForm() {
 
 
 function toggleTransferForm() {
-	var transferDiv = document.getElementById("transferForm");
 	
-	if (transferDiv.style.display == "none") {
+	if (transferDiv.style.display == "none" && withdrawDiv.style.display == "none" && depositDiv.style.display == "none") {
 		transferDiv.style.display = "block";
 	} 
 	else {

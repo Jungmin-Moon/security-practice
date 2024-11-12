@@ -29,9 +29,6 @@
 	width: 33%;
 }
 
-#formDiv {
-	display: flex;
-}
 #depositForm {
 	margin-right: auto;
 	width: 33%;
@@ -45,4 +42,10 @@
 #transferForm {
 	margin-right: auto;
 	width: 33%;
+}
+
+#breaks {
+	width: 100%;
+	size = 1000px;
+	color = gray;
 }
