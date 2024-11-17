@@ -16,6 +16,7 @@
 		<hr id = "breaks" />
 		
 		<h1 id = "headers">Here is your account information.</h1>
+		
 		<div>
 			<table id = "userInfo">
 				<thead>
@@ -35,8 +36,11 @@
 		<br />
 		<hr id = "breaks" />
 		
-		<h1 id = "headers">Here are your recent transactions.</h1>
-		<div>
+		<div id = "noTransactions" th:if = "${#lists.isEmpty(userTransactions)}"><h1>You have made no transactions yet.</h1></div>
+		
+		
+		<div th:if = "${#lists.size(userTransactions) > 0}">
+			<h1 id = "headers">Here are your recent transactions.</h1>
 			<table id = "userTransactions">
 				<thead>
 					<tr>
@@ -65,7 +69,7 @@
 			<a href = "/profile?transactions">Click here to withdraw, deposit or transfer money</a>
 		</div>
 		
-		
+		<br />
 		<div>
 			<form th:action = "@{/logout}" method = "post">
 				<input type = "submit" value = "Sign Out" />
