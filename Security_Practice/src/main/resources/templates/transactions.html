@@ -10,6 +10,9 @@
 	
 	
 	<body id = "transactionsBody">
+		<div id = "currentBalance">
+			<h1>This is your current balance: $<span th:text = ${currentBalance}></span>
+		</div>
 		<div>
 			<h1>Which transaction would you like to perform, <span th:remove = "tag" sec:authentication = "name"> thymeleaf</span>?</h1>
 		</div>

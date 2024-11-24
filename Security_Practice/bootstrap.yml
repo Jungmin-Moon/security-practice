@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: BankApplication
+  cloud:
+   vault:
+     uri: http://127.0.0.1:8200
+     token: hvs.z75s5DR6BTrPRriZFpX5rfYu
+     scheme: http
+     kv:
+       enabled: true
+       backend: secret
+       default-context: application

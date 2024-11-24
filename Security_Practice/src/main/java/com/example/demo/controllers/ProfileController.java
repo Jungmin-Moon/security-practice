@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 
 import org.springframework.security.core.Authentication;
@@ -54,6 +55,15 @@ public class ProfileController {
 	public String transactions(Authentication auth, Model model) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
+		var bankDetails = bankRepo.getInfo(user.getUsername());
+		
+		NumberFormat nF= NumberFormat.getInstance();
+		nF.setMinimumFractionDigits(2);
+		
+		String amountReadable = nF.format(bankDetails.getAmount());
+		
+		model.addAttribute("currentBalance", amountReadable);
+		
 		return "transactions.html";
 	}
 	
@@ -63,6 +73,8 @@ public class ProfileController {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		Transactions transaction = new Transactions();
 		transaction.setUsername(user.getUsername());
+		
+		
 		
 		if (transferTarget != null) {
 			transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
