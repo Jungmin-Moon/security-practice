@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.entities.Transactions;
 import com.example.demo.repositories.BankAccountRepository;
+import com.example.demo.services.TransactionCheckService;
 import com.example.demo.services.TransactionService;
 
 @Controller
@@ -23,11 +24,12 @@ public class ProfileController {
 
 	private BankAccountRepository bankRepo;
 	private TransactionService transactionService;
+	private TransactionCheckService transactionCheckService;
 	
-	ProfileController(BankAccountRepository bankRepo, TransactionService transactionService) {
+	ProfileController(BankAccountRepository bankRepo, TransactionService transactionService, TransactionCheckService transactionCheckService) {
 		this.bankRepo = bankRepo;
 		this.transactionService = transactionService;
-		
+		this.transactionCheckService = transactionCheckService;
 	}
 	
 	@GetMapping() 
@@ -74,18 +76,22 @@ public class ProfileController {
 		Transactions transaction = new Transactions();
 		transaction.setUsername(user.getUsername());
 		
-		
-		
-		if (transferTarget != null) {
-			transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
-			transactionService.addTransaction(transaction, user);
+		if (!transactionCheckService.validTransaction(transaction)) {
+			//error message on transactions Page
+			
+			return "transactions.html";
 		} else {
 		
-			transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
-			transactionService.addTransaction(transaction, user);
+			if (transferTarget != null) {
+				transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
+				transactionService.addTransaction(transaction, user);
+			} else {
+			
+				transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
+				transactionService.addTransaction(transaction, user);
+			}
+			return "redirect:/profile";
 		}
-		
-		return "redirect:/profile";
 	}
 	
 	

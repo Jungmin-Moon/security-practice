@@ -12,8 +12,16 @@ public class TransactionCheckService {
 	public boolean validTransaction(Transactions transaction) {
 		boolean canPerformTransaction = false;
 		
-		
-		
+		switch(transaction.getTransactionType()) {
+			case "withdraw":
+				canPerformTransaction = ifWithdraw(transaction);
+			case "deposit":
+				canPerformTransaction = ifDeposit(transaction);
+			case "transfer":
+				canPerformTransaction = ifTransfer(transaction);
+			default:
+				
+		}
 		
 		
 		
