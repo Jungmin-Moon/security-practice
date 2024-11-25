@@ -56,7 +56,14 @@ public class TransactionCheckService {
 	public boolean ifTransfer(Transactions transaction, BankAccounts userBankDetails) {
 		boolean valid = false;
 		
+		BigDecimal tempUserAmount = userBankDetails.getAmount();
+		BigDecimal potentialLeftInAccount = tempUserAmount.subtract(transaction.getTransactionAmount());
 		
+		if (potentialLeftInAccount.compareTo(minInBank) < 0) {
+			valid = false;
+		} else {
+			valid = true;
+		}
 		
 		return valid;
 	}
@@ -64,7 +71,11 @@ public class TransactionCheckService {
 	public boolean ifDeposit(Transactions transaction, BankAccounts userBankDetails) {
 		boolean valid = false;
 		
-		
+		if (transaction.getTransactionAmount().compareTo(minDepositAmount) >= 0) {
+			valid = true;
+		} else {
+			valid = false;
+		}
 		
 		return valid;
 	}
