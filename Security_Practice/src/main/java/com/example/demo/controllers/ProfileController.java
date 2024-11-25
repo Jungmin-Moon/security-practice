@@ -57,12 +57,12 @@ public class ProfileController {
 	public String transactions(Authentication auth, Model model) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
-		var bankDetails = bankRepo.getInfo(user.getUsername());
+		var userBankDetails = bankRepo.getInfo(user.getUsername());
 		
 		NumberFormat nF= NumberFormat.getInstance();
 		nF.setMinimumFractionDigits(2);
 		
-		String amountReadable = nF.format(bankDetails.getAmount());
+		String amountReadable = nF.format(userBankDetails.getAmount());
 		
 		model.addAttribute("currentBalance", amountReadable);
 		
@@ -76,7 +76,9 @@ public class ProfileController {
 		Transactions transaction = new Transactions();
 		transaction.setUsername(user.getUsername());
 		
-		if (!transactionCheckService.validTransaction(transaction)) {
+		var userBankDetails = bankRepo.getInfo(user.getUsername());
+		
+		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
 			//error message on transactions Page
 			
 			return "transactions.html";
