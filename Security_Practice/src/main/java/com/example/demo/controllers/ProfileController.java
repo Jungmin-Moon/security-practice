@@ -71,7 +71,7 @@ public class ProfileController {
 	
 	@PostMapping("/transactions")
 	public String transactionsPost(@RequestParam(required = false) String transferTarget, @RequestParam String transactionType, @RequestParam String transactionAmount,
-									Authentication auth) {
+									Authentication auth, Model model) {
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		Transactions transaction = new Transactions();
 		transaction.setUsername(user.getUsername());
@@ -80,7 +80,8 @@ public class ProfileController {
 		
 		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
 			//error message on transactions Page
-			
+			String invalidTransaction = "The transaction is invalid.";
+			model.addAttribute("transactionError", invalidTransaction);
 			return "transactions.html";
 		} else {
 		
