@@ -71,7 +71,13 @@ public class ProfileController {
 	
 	@PostMapping("/transactions")
 	public String transactionsPost(@RequestParam(required = false) String transferTarget, @RequestParam String transactionType, @RequestParam String transactionAmount,
-									Authentication auth, Model model) {
+									Authentication auth, Model model, @RequestParam(required = false) String back) {
+		
+		if (back != null) {
+			return "redirect:/profile";
+		}
+		
+		
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		Transactions transaction = new Transactions();
 		transaction.setUsername(user.getUsername());
