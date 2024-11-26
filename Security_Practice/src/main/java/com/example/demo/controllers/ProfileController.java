@@ -84,23 +84,12 @@ public class ProfileController {
 		transaction.setUsername(user.getUsername());
 		
 		var userBankDetails = bankRepo.getInfo(user.getUsername());
-		/*
-		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
-			String invalidTransaction = "The transaction is invalid.";
-			model.addAttribute("transactionError", invalidTransaction);
-			return "transactions.html";
-		} else {
+		NumberFormat nF= NumberFormat.getInstance();
+		nF.setMinimumFractionDigits(2);
 		
-			if (transferTarget != null) {
-				transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
-				transactionService.addTransaction(transaction, user);
-			} else {
-			
-				transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
-				transactionService.addTransaction(transaction, user);
-			}
-			return "redirect:/profile";
-		} */
+		String amountReadable = nF.format(userBankDetails.getAmount());
+		
+		model.addAttribute("currentBalance", amountReadable);
 		
 		if (transferTarget != null) {
 			transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
