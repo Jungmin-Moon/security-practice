@@ -2,9 +2,12 @@ package com.example.demo.services;
 
 import java.math.BigDecimal;
 
+import org.springframework.stereotype.Component;
+
 import com.example.demo.entities.BankAccounts;
 import com.example.demo.entities.Transactions;
 
+@Component
 public class TransactionCheckService {
 	
 	private final BigDecimal minWithdrawAmount = new BigDecimal(20);
@@ -13,6 +16,8 @@ public class TransactionCheckService {
 	
 	public boolean validTransaction(Transactions transaction, BankAccounts userBankDetails) {
 		boolean canPerformTransaction = false;
+		
+		//System.out.println(transaction.getTransactionType());
 		
 		switch(transaction.getTransactionType()) {
 			case "withdraw":

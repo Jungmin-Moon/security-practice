@@ -54,7 +54,13 @@ public class ProfileController {
 	
 	
 	@GetMapping("/transactions")
-	public String transactions(Authentication auth, Model model) {
+	public String transactions(Authentication auth, Model model, @RequestParam(required = false) String back) {
+		
+		if (back != null) {
+			return "redirect:/profile";
+		}
+		
+		
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		
 		var userBankDetails = bankRepo.getInfo(user.getUsername());
@@ -71,12 +77,7 @@ public class ProfileController {
 	
 	@PostMapping("/transactions")
 	public String transactionsPost(@RequestParam(required = false) String transferTarget, @RequestParam String transactionType, @RequestParam String transactionAmount,
-									Authentication auth, Model model, @RequestParam(required = false) String back) {
-		
-		if (back != null) {
-			return "redirect:/profile";
-		}
-		
+									Authentication auth, Model model) {
 		
 		UserDetails user = (UserDetails) auth.getPrincipal();
 		Transactions transaction = new Transactions();
@@ -85,7 +86,6 @@ public class ProfileController {
 		var userBankDetails = bankRepo.getInfo(user.getUsername());
 		
 		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
-			//error message on transactions Page
 			String invalidTransaction = "The transaction is invalid.";
 			model.addAttribute("transactionError", invalidTransaction);
 			return "transactions.html";
