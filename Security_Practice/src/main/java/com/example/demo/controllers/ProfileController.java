@@ -84,7 +84,7 @@ public class ProfileController {
 		transaction.setUsername(user.getUsername());
 		
 		var userBankDetails = bankRepo.getInfo(user.getUsername());
-		
+		/*
 		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
 			String invalidTransaction = "The transaction is invalid.";
 			model.addAttribute("transactionError", invalidTransaction);
@@ -100,7 +100,23 @@ public class ProfileController {
 				transactionService.addTransaction(transaction, user);
 			}
 			return "redirect:/profile";
+		} */
+		
+		if (transferTarget != null) {
+			transaction = createTransferTransaction(transferTarget, transactionAmount, transactionType);
+		} else {
+			transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
 		}
+		
+		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
+			String invalidTransaction = "The transaction is invalid.";
+			model.addAttribute("transactionError", invalidTransaction);
+			return "transactions.html";
+		} else {
+			transactionService.addTransaction(transaction, user);
+			return "redirect:/profile";
+		}
+		
 	}
 	
 	
