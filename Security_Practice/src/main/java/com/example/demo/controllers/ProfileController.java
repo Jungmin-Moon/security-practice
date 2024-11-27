@@ -97,15 +97,18 @@ public class ProfileController {
 			transaction = createTransactionWithdrawAndDeposit(transactionAmount, transactionType);
 		}
 		
-		if (!transactionCheckService.validTransaction(transaction, userBankDetails)) {
+		System.out.println(transactionCheckService.validTransaction(transaction, userBankDetails));
+	
+		
+		
+		if (transactionCheckService.validTransaction(transaction, userBankDetails) == false) {
 			String invalidTransaction = "The transaction is invalid.";
 			model.addAttribute("transactionError", invalidTransaction);
 			return "transactions.html";
 		} else {
 			transactionService.addTransaction(transaction, user);
 			return "redirect:/profile";
-		}
-		
+		} 
 	}
 	
 	

@@ -17,19 +17,17 @@ public class TransactionCheckService {
 	public boolean validTransaction(Transactions transaction, BankAccounts userBankDetails) {
 		boolean canPerformTransaction = false;
 		
-		//System.out.println(transaction.getTransactionType());
-		
-		switch(transaction.getTransactionType()) {
-			case "withdraw":
-				canPerformTransaction = ifWithdraw(transaction, userBankDetails);
-			case "deposit":
-				canPerformTransaction = ifDeposit(transaction, userBankDetails);
-			case "transfer":
-				canPerformTransaction = ifTransfer(transaction, userBankDetails);
-			default:
-				canPerformTransaction = false;
+		if (transaction.getTransactionType().equals("withdraw")) {
+			canPerformTransaction = ifWithdraw(transaction, userBankDetails);
 		}
-
+		
+		if (transaction.getTransactionType().equals("transfer")) {
+			canPerformTransaction = ifTransfer(transaction, userBankDetails);
+		}
+		
+		if (transaction.getTransactionType().equals("deposit")) {
+			canPerformTransaction = ifDeposit(transaction, userBankDetails);
+		}
 		return canPerformTransaction;
 	}
 	
@@ -76,10 +74,12 @@ public class TransactionCheckService {
 	public boolean ifDeposit(Transactions transaction, BankAccounts userBankDetails) {
 		boolean valid = false;
 		
-		if (transaction.getTransactionAmount().compareTo(minDepositAmount) >= 0) {
-			valid = true;
-		} else {
+		int comparison = transaction.getTransactionAmount().compareTo(minDepositAmount);
+		
+		if (comparison == -1) {
 			valid = false;
+		} else {
+			valid =  true;
 		}
 		
 		return valid;
